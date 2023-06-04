@@ -11,9 +11,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Logger;
 
 @GrpcService
 public class AdService extends AdServiceGrpc.AdServiceImplBase {
+
+    private static final Logger LOG = Logger.getLogger(AdService.class.getName());
 
     private static int MAX_ADS_TO_SERVE = 2;
     private static final MultiAdMap adsMap = createAdsMap();
@@ -22,12 +25,21 @@ public class AdService extends AdServiceGrpc.AdServiceImplBase {
     public void getAds(AdRequest request, StreamObserver<AdResponse> responseObserver) {
         List<Ad> allAds = new ArrayList<>();
         if (request.getContextKeysCount() > 0) {
+            String keys = "";
             for (int i = 0; i < request.getContextKeysCount(); i++) {
+                keys = keys + " " + request.getContextKeys(i);
                 Collection<Ad> ads = getAdsByCategory(request.getContextKeys(i));
-                allAds.addAll(ads);
+                if(ads ==  null){
+                    LOG.info("Didn't find any ads for context key " + request.getContextKeys(i));
+                }
+                else {
+                    allAds.addAll(ads);
+                }
             }
+            LOG.info("Received request, context keys: " + keys);
         } else {
             allAds = getRandomAds();
+            LOG.info("Received request, no context keys provided");
         }
         if (allAds.isEmpty()) {
             // Serve random ads.
