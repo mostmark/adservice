@@ -14,8 +14,7 @@ import java.util.Random;
 
 @GrpcService
 public class AdService extends AdServiceGrpc.AdServiceImplBase {
-
-    //private static final Random random = new Random();
+    
     private static int MAX_ADS_TO_SERVE = 2;
     private static final MultiAdMap adsMap = createAdsMap();
 
