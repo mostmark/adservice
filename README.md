@@ -9,6 +9,10 @@ To package to a java application:
 
     mvn package
 
+To package to a java application and deploy to an openshift cluster:
+
+    mvn package -Dquarkus.kubernetes.deploy=true
+
 To package to a native application using GraalVM:
 
     mvn package -Pnative
