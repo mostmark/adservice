@@ -9,7 +9,6 @@ To package to a java application:
 
 ```
 mvn package
-
 ```
 
 The run the application by the following command:
@@ -24,14 +23,12 @@ To package to a java application and deploy to an openshift cluster:
 
 ```
 mvn package -Dquarkus.kubernetes.deploy=true
-
 ```
 
 To package to a native application using GraalVM:
 
 ```
 mvn package -Pnative
-
 ```
 
 You can the run the application by the following command:
@@ -44,6 +41,5 @@ To deploy this application from a prebuilt container image:
 
 ```
 oc create -f https://raw.githubusercontent.com/mostmark/adservice/refs/heads/main/deployment.yaml
-
 ```
 
