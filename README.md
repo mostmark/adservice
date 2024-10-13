@@ -18,7 +18,7 @@ The run the application by the following command:
 java -jar target/adservice-1.0-runner.jar
 ```
 
-You can then access a simple web interface on (http://localhost:8080)
+You can then access a simple web interface on http://localhost:8080
 
 To package to a java application and deploy to an openshift cluster:
 
