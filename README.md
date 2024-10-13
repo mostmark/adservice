@@ -16,3 +16,9 @@ To package to a java application and deploy to an openshift cluster:
 To package to a native application using GraalVM:
 
     mvn package -Pnative
+
+To deploy this application from a prebuilt container image:
+
+'''
+oc create -f https://raw.githubusercontent.com/mostmark/adservice/refs/heads/main/deployment.yaml
+'''
