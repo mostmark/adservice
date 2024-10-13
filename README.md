@@ -34,6 +34,13 @@ mvn package -Pnative
 
 ```
 
+You can the run the application by the following command:
+
+```
+./target/adservice-1.0-runner
+
+```
+
 To deploy this application from a prebuilt container image:
 
 ```
